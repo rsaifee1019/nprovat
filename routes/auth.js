@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
 const crypto = require('crypto');
-const { sendVerificationEmail } = require('../utils/emailService');
 
 const BCRYPT_SALT_ROUNDS = 10;
 

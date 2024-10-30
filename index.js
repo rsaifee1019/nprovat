@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const Article = require('./models/Article');
 require('dotenv').config();
 
 const app = express();
@@ -9,9 +10,11 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://www.natunprovat.com', 'https://natunprovat.com'],
+  origin: ['http://localhost:5173', 'http://localhost:3000', 'https://www.natunprovat.com', 'https://natunprovat.com'],
   credentials: true
 }));
+
+
 
 // Import routes
 const articleRoutes = require('./routes/articles');
@@ -28,6 +31,8 @@ mongoose.connect(process.env.MONGODB_URI, {
 })
 .then(() => console.log('Connected to MongoDB'))
 .catch((err) => console.error('MongoDB connection error:', err));
+
+
 
 // API routes
 app.use('/api/auth', authRoutes);
